@@ -1,0 +1,105 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix schema: <https://schema.org/> .
+@prefix ex: <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+#################################################################
+# Shape: Volleyball Player
+#################################################################
+
+ex:VolleyballPlayerShape
+    a sh:NodeShape ;
+    sh:targetClass dbo:VolleyballPlayer ;
+
+    # Player name must be a string
+    sh:property [
+        sh:path <http://purl.org/healthcarevocab/v1#PersonName> ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Each VolleyballPlayer must have a PersonName (string)." ;
+    ] ;
+
+	# Player must have a position
+
+  # Optional link to statistics node
+    sh:property [
+        sh:path rdfs:hasProperty ;
+        sh:node ex:StatisticsShape ;
+        sh:minCount 1 ;
+        sh:message "Each VolleyballPlayer must have at least one Statistics node." ;
+    ] .
+
+#################################################################
+# Shape: Statistics
+#################################################################
+
+ex:StatisticsShape
+    a sh:NodeShape ;
+
+    # attacksPercentage
+    sh:property [
+        sh:path ex:attacksPercentage ;
+        sh:datatype xsd:double ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100 ;
+        sh:message "attacksPercentage must be a number between 0 and 100." ;
+    ] ;
+
+    # blocksAveragePerSet
+    sh:property [
+        sh:path ex:blocksAveragePerSet ;
+        sh:datatype xsd:double ;
+        sh:minInclusive 0 ;
+        sh:message "blocksAveragePerSet must be a non-negative double." ;
+    ] ;
+
+    # digsAveragePerSet
+    sh:property [
+        sh:path ex:digsAveragePerSet ;
+        sh:datatype xsd:double ;
+        sh:minInclusive 0 ;
+        sh:message "digsAveragePerSet must be a non-negative double." ;
+    ] ;
+
+    # servicesInPlay
+    sh:property [
+        sh:path ex:servicesInPlay ;
+        sh:datatype xsd:double ;
+        sh:minInclusive 0 ;
+        sh:message "servicesInPlay must be a non-negative double." ;
+    ] ;
+
+    # receptionPercentage
+    sh:property [
+        sh:path ex:receptionPercentage ;
+        sh:datatype xsd:double ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100 ;
+        sh:message "receptionPercentage must be between 0 and 100." ;
+    ] ;
+
+    # setsAveragePerSet
+    sh:property [
+        sh:path ex:setsAveragePerSet ;
+        sh:datatype xsd:double ;
+        sh:minInclusive 0 ;
+        sh:message "setsAveragePerSet must be a non-negative double." ;
+    ] ;
+	
+	#Position of the player
+	sh:property [
+      sh:path ex:Player_position ;
+      sh:datatype xsd:string;
+    ] .
+
+
+ex:AwardShape
+	a sh:NodeShape ;
+
+	sh:property [
+      sh:path ex:won_in ;
+      sh:datatype xsd:string ;
+      sh:minCount 2
+    ] .

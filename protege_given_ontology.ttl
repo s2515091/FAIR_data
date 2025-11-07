@@ -1,0 +1,164 @@
+@prefix : <https://w3id.org/FAIR-course-UT/2025-2026/group2/ont#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pcv: <http://purl.org/healthcarevocab/v1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dbpo: <http://dbpedia.org/ontology/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix local: <http://127.0.0.1:3333/> .
+@prefix schema: <https://schema.org/> .
+@prefix scs-vb: <https://sportschema.org/ontologies/volleyball/> .
+@prefix scs-main: <https://sportschema.org/ontologies/main/> .
+@base <https://w3id.org/FAIR-course-UT/2025-2026/group2/ont> .
+
+<https://w3id.org/FAIR-course-UT/2025-2026/group2/ont> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dbpedia.org/ontology/nationality
+dbpo:nationality rdf:type owl:ObjectProperty ;
+                 rdfs:domain dbpo:VolleyballPlayer ;
+                 rdfs:range <http://data.archiveshub.ac.uk/def/countryCode> ;
+                 rdfs:label "Nationality" .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#hasProperty
+rdfs:hasProperty rdf:type owl:ObjectProperty ;
+                 rdfs:domain dbpo:VolleyballPlayer ;
+                 rdfs:range <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics> ;
+                 rdfs:label "Has Statistics" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://dbpedia.org/ontology/award
+dbpo:award rdf:type owl:DatatypeProperty ;
+           rdfs:domain <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Award> ;
+           rdfs:range xsd:date ;
+           rdfs:comment "The year or date when the award was given." ;
+           rdfs:label "award date" .
+
+
+###  http://dbpedia.org/ontology/Person/height
+<http://dbpedia.org/ontology/Person/height> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain dbpo:VolleyballPlayer ;
+                                            rdfs:range xsd:int ;
+                                            rdfs:label "Height" .
+
+
+###  http://dbpedia.org/ontology/Person/weight
+<http://dbpedia.org/ontology/Person/weight> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain dbpo:VolleyballPlayer ;
+                                            rdfs:range xsd:int ;
+                                            rdfs:label "Weight" .
+
+
+###  http://purl.org/healthcarevocab/v1#PersonName
+pcv:PersonName rdf:type owl:DatatypeProperty ;
+               rdfs:domain dbpo:VolleyballPlayer ;
+               rdfs:range xsd:string ;
+               rdfs:label "Person Name" .
+
+
+###  https://schema.org/birthDate
+schema:birthDate rdf:type owl:DatatypeProperty ;
+                 rdfs:domain dbpo:VolleyballPlayer ;
+                 rdfs:range xsd:date ;
+                 rdfs:label "Birth Date" .
+
+
+###  https://sportschema.org/ontologies/main/positionRegular
+scs-main:positionRegular rdf:type owl:DatatypeProperty ;
+                         rdfs:domain <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics> ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "Position" .
+
+
+###  https://sportschema.org/ontologies/volleyball/attacksPercentage
+scs-vb:attacksPercentage rdf:type owl:DatatypeProperty ;
+                         rdfs:domain <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics> ;
+                         rdfs:range xsd:double ;
+                         rdfs:label "Attack Percentage" .
+
+
+###  https://sportschema.org/ontologies/volleyball/blocksAveragePerSet
+scs-vb:blocksAveragePerSet rdf:type owl:DatatypeProperty ;
+                           rdfs:domain <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics> ;
+                           rdfs:range xsd:double ;
+                           rdfs:label "Blocks Average Per Set" .
+
+
+###  https://sportschema.org/ontologies/volleyball/digsAveragePerSet
+scs-vb:digsAveragePerSet rdf:type owl:DatatypeProperty ;
+                         rdfs:domain <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics> ;
+                         rdfs:range xsd:double ;
+                         rdfs:label "Digs Average Per Set" .
+
+
+###  https://sportschema.org/ontologies/volleyball/receptionPercentage
+scs-vb:receptionPercentage rdf:type owl:DatatypeProperty ;
+                           rdfs:domain <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics> ;
+                           rdfs:range xsd:double ;
+                           rdfs:label "Reception Percentage" .
+
+
+###  https://sportschema.org/ontologies/volleyball/servicesInPlay
+scs-vb:servicesInPlay rdf:type owl:DatatypeProperty ;
+                      rdfs:domain <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics> ;
+                      rdfs:range xsd:double ;
+                      rdfs:label "Services In Play" .
+
+
+###  https://sportschema.org/ontologies/volleyball/setsAveragePerSet
+scs-vb:setsAveragePerSet rdf:type owl:DatatypeProperty ;
+                         rdfs:domain <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics> ;
+                         rdfs:range xsd:double ;
+                         rdfs:label "Sets Average Per Set" .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group2/data#won_in
+<https://w3id.org/FAIR-course-UT/2025-2026/group2/data#won_in> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:domain <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Award> ;
+                                                               rdfs:range xsd:string ;
+                                                               rdfs:comment "The competition or tournament where the award was won." ;
+                                                               rdfs:label "won in" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.archiveshub.ac.uk/def/countryCode
+<http://data.archiveshub.ac.uk/def/countryCode> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/VolleyballPlayer
+dbpo:VolleyballPlayer rdf:type owl:Class ;
+                      rdfs:label "Volleyball Player" .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Award
+<https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Award> rdf:type owl:Class ;
+                                                              rdfs:comment "An award or recognition received by a player or team." ;
+                                                              rdfs:label "Award" .
+
+
+###  https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics
+<https://w3id.org/FAIR-course-UT/2025-2026/group2/data#Statistics> rdf:type owl:Class ;
+                                                                   rdfs:label "Player Statistics" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
