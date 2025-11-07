@@ -73,7 +73,7 @@ ex:Dataset
     # --- 2. Distribution 1: The Dataset File ---
     dcat:distribution [
         a dcat:Distribution ;
-        dct:identifier "https://w3id.org/FAIR-course-UT/2025-2026/group2/data/dist/ttl" ;
+        dct:identifier "https://w3id.org/FAIR-course-UT/2025-2026/group2/data#" ;
         dcat:mediaType <http://www.iana.org/assignments/media-types/text/turtle> ;
         dct:format "TTL" ;
         dcat:downloadURL <./turtle_data_of_whole_dataset.ttl> ;
@@ -84,7 +84,7 @@ ex:Dataset
     # --- 3. Distribution 2: Dataset Schema/Validation Reference (SHACL) ---
     dcat:distribution [
         a dcat:Distribution ;
-        dct:identifier "https://w3id.org/FAIR-course-UT/2025-2026/group2/data/dist/shacl" ;
+        dct:identifier "https://w3id.org/FAIR-course-UT/2025-2026/group2/shacl.ttl" ;
         dcat:mediaType <http://www.iana.org/assignments/media-types/text/turtle> ;
         dct:format "SHACL Shapes (TTL)" ;
         dct:title "Volleyball Dataset SHACL Constraints" ;
