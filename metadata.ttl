@@ -1,0 +1,78 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ex: <https://w3id.org/FAIR-course-UT/2025-2026/group2/data#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <https://schema.org/> . # <-- NEW: Added schema prefix
+
+# --- 1. Dataset Resource Description ---
+
+# The dataset URI from your data file is used as the main identifier.
+ex:Dataset
+    a dcat:Dataset ;
+    dct:title "VNL Dataset Expansion" ;
+    dct:description "A collection of statistics and biographical data for professional volleyball players, including attack percentage, block average per set, height, weight, and position. Additionally includes awards won by the players" ;
+    dct:identifier "https://w3id.org/FAIR-course-UT/2025-2026/group2/data" ;
+    
+    # Information inferred from your namespaces/content:
+    dct:subject <http://dbpedia.org/ontology/VolleyballPlayer> ;
+    dct:language <http://id.loc.gov/vocabulary/iso639-1/en> ;
+    dct:created "2025-10-27"^^xsd:date ;
+    dct:issued "2025-11-07"^^xsd:date ;
+    dct:modified "2025-11-07"^^xsd:date ;
+
+    # Mandatory/Recommended Properties to fill in
+    
+    # --- CREATORS (The Authors) ---
+    dct:creator [
+        a foaf:Person ;
+        foaf:name "Arda Akyazı" ;
+        # Optional: Add ORCID or affiliation for better attribution
+        # schema:affiliation "University of Twente" ;
+    ] ;
+    dct:creator [
+        a foaf:Person ;
+        foaf:name "Berry Dominguez" ;
+        # Optional: Add ORCID or affiliation for better attribution
+        # schema:affiliation "University of Twente" ;
+    ] ;
+    
+    # --- PUBLISHER (The Organization) ---
+    dct:publisher [
+        a foaf:Organization ;
+        foaf:name "2025-2026 FAIR Course Group 2, University of Twente"
+    ] ;
+    
+    # --- CONTACT POINT (One Person for Queries) ---
+    dcat:contactPoint [
+        a schema:ContactPoint ;
+        schema:name "Arda Akyazı" ;
+        schema:email "a.akyazi@student.utwente.nl"
+    ] ;
+
+    dct:license <[TBD: URI of the license, e.g., https://creativecommons.org/licenses/by/4.0/]> ;
+    
+    # --- 2. Distribution (The data file itself) ---
+    dcat:distribution [
+        a dcat:Distribution ;
+        dcat:mediaType <http://www.iana.org/assignments/media-types/text/turtle> ;
+        dct:format "TTL" ;
+        dcat:downloadURL <./turtle_data_of_whole_dataset.ttl> ;
+        dct:title "Volleyball Player Dataset (Turtle RDF)" ;
+        dcat:byteSize "[TBD: Size of turtle_data_of_whole_dataset.ttl in bytes]"^^xsd:integer
+    ] ;
+
+    # --- 3. Dataset Schema/Validation Reference ---
+    # The SHACL file describes the constraints and structure of the data.
+    dcat:distribution [
+        a dcat:Distribution ;
+        dcat:mediaType <http://www.iana.org/assignments/media-types/text/turtle> ;
+        dct:format "SHACL Shapes (TTL)" ;
+        dct:title "Volleyball Dataset SHACL Constraints" ;
+        dcat:downloadURL <./shacl.tll> ;
+        dcat:byteSize "[TBD: Size of shacl.tll in bytes]"^^xsd:integer ;
+        dct:conformsTo <http://www.w3.org/ns/shacl>
+    ] .
